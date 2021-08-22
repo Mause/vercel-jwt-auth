@@ -1,0 +1,14 @@
+{
+  "name": "vercel-jwt-auth",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "repository": "https://github.com/Mause/vercel-jwt-auth.git",
+  "author": "Elliana <me@mause.me>",
+  "private": false,
+  "dependencies": {
+    "@vercel/node": "^1.12.1",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0"
+  }
+}
