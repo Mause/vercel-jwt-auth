@@ -2,6 +2,16 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import { Request, Response } from "express";
 import jwt from "express-jwt";
 
+class ErrorBox {
+  _tag = 'error';
+  constructor(public error: ResponseShape) {}
+}
+class UserBox<T> {
+  _tag = 'user';
+  constructor(public user: T) {}
+}
+type Box<T> = UserBox<T> | ErrorBox;
+
 const filter = jwt({
   algorithms: ["HS256"],
   credentialsRequired: true,
@@ -18,10 +28,10 @@ function isResponse(r: any): r is ResponseShape {
   return r?.status && r?.message;
 }
 
-export async function authenticate(request: VercelRequest, response: VercelResponse) {
+export async function authenticate<T>(request: VercelRequest, response: VercelResponse): Promise<Box<T>> {
   const expressRequest = request as unknown as Request;
   const error = await new Promise((resolve) =>
     filter(expressRequest, response as unknown as Response, resolve)
   );
-  return isResponse(error) ? error : expressRequest.user;
+  return isResponse(error) ? new ErrorBox(error) : new UserBox(expressRequest.user);
 }
