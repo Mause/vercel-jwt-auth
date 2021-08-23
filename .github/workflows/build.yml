@@ -6,6 +6,10 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: yarn build
-     
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14
+      - run: yarn --frozen
+      - name: TypeScript Error Reporter
+        uses: andoshin11/typescript-error-reporter-action@v1.0.2
