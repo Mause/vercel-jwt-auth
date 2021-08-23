@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { Request, Response } from "express";
+import { Request, Response, User } from "express";
 import jwt from "express-jwt";
 
 class ErrorBox {
@@ -28,7 +28,7 @@ function isResponse(r: any): r is ResponseShape {
   return r?.status && r?.message;
 }
 
-export async function authenticate<T>(request: VercelRequest, response: VercelResponse): Promise<Box<T>> {
+export async function authenticate(request: VercelRequest, response: VercelResponse): Promise<Box<User>> {
   const expressRequest = request as unknown as Request;
   const error = await new Promise((resolve) =>
     filter(expressRequest, response as unknown as Response, resolve)
