@@ -36,5 +36,5 @@ export async function authenticate(request: VercelRequest, response: VercelRespo
   const error = await new Promise((resolve) =>
     filter(expressRequest, response as unknown as Response, resolve)
   );
-  return isResponse(error) ? new ErrorBox(error) : new UserBox(expressRequest.user);
+  return isResponse(error) ? new ErrorBox(error) : (expressRequest.user ? new UserBox(expressRequest.user) : new ErrorBox({message: 'No user', status: 422}));
 }
