@@ -1,6 +1,9 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import { Request, Response, User } from "express";
+import { Request, Response } from "express";
 import jwt from "express-jwt";
+import {Express} from 'express';
+
+type User = Express.User;
 
 class ErrorBox {
   _tag = 'error';
