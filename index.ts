@@ -15,13 +15,6 @@ class UserBox<T> {
 }
 type Box<T> = UserBox<T> | ErrorBox;
 
-const filter = jwt({
-  algorithms: ["HS256"],
-  credentialsRequired: true,
-  audience: "authenticated",
-  secret: "fbbb2db8-89e4-4a15-9493-bdfd2bc9c8e5",
-});
-
 interface ResponseShape {
   status: number;
   message: string;
@@ -31,17 +24,26 @@ function isResponse(r: any): r is ResponseShape {
   return r?.status && r?.message;
 }
 
-export async function authenticate(
-  request: VercelRequest,
-  response: VercelResponse
-): Promise<Box<User>> {
-  const expressRequest = request as unknown as Request;
-  const error = await new Promise((resolve) =>
-    filter(expressRequest, response as unknown as Response, resolve)
-  );
-  return isResponse(error)
-    ? new ErrorBox(error)
-    : expressRequest.user
-    ? new UserBox(expressRequest.user)
-    : new ErrorBox({ message: "No user", status: 422 });
+export function factory(secret: string) {
+  const filter = jwt({
+    algorithms: ["HS256"],
+    credentialsRequired: true,
+    audience: "authenticated",
+    secret,
+  });
+
+  return async function authenticate(
+    request: VercelRequest,
+    response: VercelResponse
+  ): Promise<Box<User>> {
+    const expressRequest = request as unknown as Request;
+    const error = await new Promise((resolve) =>
+      filter(expressRequest, response as unknown as Response, resolve)
+    );
+    return isResponse(error)
+      ? new ErrorBox(error)
+      : expressRequest.user
+      ? new UserBox(expressRequest.user)
+      : new ErrorBox({ message: "No user", status: 422 });
+  };
 }
