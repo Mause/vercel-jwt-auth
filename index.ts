@@ -1,16 +1,16 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { Request, Response } from "express";
 import jwt from "express-jwt";
-import {Express} from 'express';
+import { Express } from "express";
 
 type User = Express.User;
 
 class ErrorBox {
-  _tag = 'error';
+  _tag = "error";
   constructor(public error: ResponseShape) {}
 }
 class UserBox<T> {
-  _tag = 'user';
+  _tag = "user";
   constructor(public user: T) {}
 }
 type Box<T> = UserBox<T> | ErrorBox;
@@ -31,10 +31,17 @@ function isResponse(r: any): r is ResponseShape {
   return r?.status && r?.message;
 }
 
-export async function authenticate(request: VercelRequest, response: VercelResponse): Promise<Box<User>> {
+export async function authenticate(
+  request: VercelRequest,
+  response: VercelResponse
+): Promise<Box<User>> {
   const expressRequest = request as unknown as Request;
   const error = await new Promise((resolve) =>
     filter(expressRequest, response as unknown as Response, resolve)
   );
-  return isResponse(error) ? new ErrorBox(error) : (expressRequest.user ? new UserBox(expressRequest.user) : new ErrorBox({message: 'No user', status: 422}));
+  return isResponse(error)
+    ? new ErrorBox(error)
+    : expressRequest.user
+    ? new UserBox(expressRequest.user)
+    : new ErrorBox({ message: "No user", status: 422 });
 }
