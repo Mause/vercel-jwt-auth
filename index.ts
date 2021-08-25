@@ -5,15 +5,15 @@ import { Express } from "express";
 
 type User = Express.User;
 
-class ErrorBox {
-  _tag = "error";
+export class ErrorBox {
+  _tag = 'error';
   constructor(public error: ResponseShape) {}
 }
-class UserBox<T> {
-  _tag = "user";
+export class UserBox<T> {
+  _tag = 'user';
   constructor(public user: T) {}
 }
-type Box<T> = UserBox<T> | ErrorBox;
+export type Box<T> = UserBox<T> | ErrorBox;
 
 interface ResponseShape {
   status: number;
