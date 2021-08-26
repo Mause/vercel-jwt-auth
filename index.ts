@@ -23,10 +23,7 @@ export function factory(secret: string) {
   });
 
   return function authenticate(handler: VercelApiHandler): VercelApiHandler {
-    return function (
-      request: VercelRequest,
-      response: VercelResponse
-    ): void {
+    return function (request: VercelRequest, response: VercelResponse): void {
       const expressRequest = request as unknown as Request;
       filter(expressRequest, response as unknown as Response, (error) => {
         if (isResponse(error)) {
