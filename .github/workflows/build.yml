@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        working: ['.', 'test-project']
-    
+        working: [".", "test-project"]
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
