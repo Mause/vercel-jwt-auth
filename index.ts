@@ -26,7 +26,7 @@ export function factory(secret: string) {
     return async function (
       request: VercelRequest,
       response: VercelResponse
-    ): Promise<Box<User>> {
+    ): void {
       const expressRequest = request as unknown as Request;
       const error = await new Promise((resolve) =>
         filter(expressRequest, response as unknown as Response, resolve)
