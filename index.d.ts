@@ -1,7 +1,9 @@
 declare global {
-  module "@vercel/node" {
-    // tslint:disable-next-line:no-empty-interface
-    interface User {}
+  declare module "@vercel/node" {
+    interface User {
+      email: string;
+      id: string;
+    }
 
     interface VercelRequest {
       user?: User | undefined;
