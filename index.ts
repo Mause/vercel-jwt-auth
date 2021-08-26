@@ -22,10 +22,11 @@ export function factory(secret: string) {
     secret,
   });
 
-  return function authenticate(
-    handler: VercelApiHandler
-  ): VercelApiHandler {
-    return async function (request: VercelRequest, response: VercelResponse): Promise<Box<User>> {
+  return function authenticate(handler: VercelApiHandler): VercelApiHandler {
+    return async function (
+      request: VercelRequest,
+      response: VercelResponse
+    ): Promise<Box<User>> {
       const expressRequest = request as unknown as Request;
       const error = await new Promise((resolve) =>
         filter(expressRequest, response as unknown as Response, resolve)
@@ -36,6 +37,6 @@ export function factory(secret: string) {
       } else {
         handler(request, response);
       }
-    }
+    };
   };
 }
