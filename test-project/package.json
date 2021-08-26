@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "vercel-jwt-auth": "../package.json"
+    "vercel-jwt-auth": "../"
   }
 }
