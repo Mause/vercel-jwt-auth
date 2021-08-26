@@ -23,20 +23,19 @@ export function factory(secret: string) {
   });
 
   return function authenticate(handler: VercelApiHandler): VercelApiHandler {
-    return async function (
+    return function (
       request: VercelRequest,
       response: VercelResponse
     ): void {
       const expressRequest = request as unknown as Request;
-      const error = await new Promise((resolve) =>
-        filter(expressRequest, response as unknown as Response, resolve)
-      );
-      if (isResponse(error)) {
-        response.status(error.status);
-        response.json(error.message);
-      } else {
-        handler(request, response);
-      }
+      filter(expressRequest, response as unknown as Response, (error) => {
+        if (isResponse(error)) {
+          response.status(error.status);
+          response.json(error.message);
+        } else {
+          handler(request, response);
+        }
+      });
     };
   };
 }
