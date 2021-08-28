@@ -8,8 +8,7 @@
   "private": false,
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "build": "tsc"
   },
   "dependencies": {
     "@types/express": "^4.17.13",

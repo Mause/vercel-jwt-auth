@@ -17,7 +17,5 @@ jobs:
         working-directory: ${{ matrix.working }}
       - run: yarn build
         working-directory: ${{ matrix.working }}
-      - run: yarn test
-        working-directory: ${{ matrix.working }}
       # - name: TypeScript Error Reporter
       #   uses: andoshin11/typescript-error-reporter-action@v1.0.2
