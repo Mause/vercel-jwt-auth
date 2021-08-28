@@ -1,7 +1,7 @@
-export * from "vercel-jwt-auth";
+export * from "./index";
+import { VercelResponse } from "@vercel/node";
 
 declare module "@vercel/node" {
-  export * from "@vercel/node";
   interface User {
     email: string;
     id: string;

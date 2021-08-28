@@ -12,4 +12,4 @@ const endpoint = authenticate(function (
   }
 });
 
-endpoint();
+endpoint({} as unknown as VercelRequest, {} as unknown as VercelResponse);
