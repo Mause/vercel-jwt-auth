@@ -1,3 +1,5 @@
+export * from "@vercel/node";
+
 declare module "@vercel/node" {
   interface User {
     email: string;
