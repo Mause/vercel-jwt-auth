@@ -1,5 +1,6 @@
 import { factory } from "vercel-jwt-auth";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import "vercel-jwt-auth/index";
 
 const authenticate = factory("secret");
 
