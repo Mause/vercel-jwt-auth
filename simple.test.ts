@@ -1,6 +1,7 @@
 import { factory } from "./index";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import JWT from "jsonwebtoken";
+import tsd from "tsd";
 
 const SECRET = "...";
 
@@ -50,3 +51,9 @@ function withHeader(header: string) {
     response
   );
 }
+
+test("tsd", async () => {
+  const diag = await tsd();
+
+  expect(diag).toEqual([]);
+});
