@@ -1,4 +1,4 @@
-import { factory, VercelRequestWithUser } from "./index";
+import { factory, VercelRequestWithUser } from "../src/vercel-jwt-auth";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import JWT from "jsonwebtoken";
 
