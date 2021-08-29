@@ -11,7 +11,7 @@
     "/dist"
   ],
   "scripts": {
-    "build": "tsc --declaration --emitDeclarationOnly",
+    "build": "tsc",
     "test": "jest"
   },
   "dependencies": {
