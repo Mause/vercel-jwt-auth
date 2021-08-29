@@ -1,6 +1,3 @@
-export * from "./index";
-import { VercelResponse, VercelRequest } from "@vercel/node";
-
 declare module "@vercel/node/dist" {
   interface User {
     email: string;
