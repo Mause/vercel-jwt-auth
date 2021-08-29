@@ -1,11 +1,11 @@
-import { factory } from "./index";
+import { factory, VercelRequestWithUser } from "./index";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import JWT from "jsonwebtoken";
-import tsd from "tsd";
 
 const SECRET = "...";
 
 const endpoint = factory(SECRET)((req, res) => {
+  console.log(req.user);
   res.status(200);
   res.json("OK");
 });
@@ -51,9 +51,3 @@ function withHeader(header: string) {
     response
   );
 }
-
-test("tsd", async () => {
-  const diag = await tsd();
-
-  expect(diag).toEqual([]);
-});

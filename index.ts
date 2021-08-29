@@ -2,6 +2,10 @@ import { VercelResponse, VercelApiHandler, VercelRequest } from "@vercel/node";
 import { Request, Response } from "express";
 import jwt from "express-jwt";
 
+export type VercelRequestWithUser = VercelRequest & {
+  user?: unknown;
+};
+
 interface ResponseShape {
   status: number;
   message: string;
@@ -19,8 +23,11 @@ export function factory(secret: string) {
     secret,
   });
 
-  return function authenticate(handler: VercelApiHandler): VercelApiHandler {
-    return function (request: VercelRequest, response: VercelResponse): void {
+  return function authenticate(handler: VercelApiHandler) {
+    return function (
+      request: VercelRequestWithUser,
+      response: VercelResponse
+    ): void {
       const expressRequest = request as unknown as Request;
       filter(expressRequest, response as unknown as Response, (error) => {
         if (isResponse(error)) {
@@ -31,17 +38,5 @@ export function factory(secret: string) {
         }
       });
     };
-  };
-}
-
-declare module "@vercel/node/dist/index" {
-  export interface User {
-    email: string;
-    id: string;
-  }
-
-  // @ts-expect-error
-  export type VercelRequest = {
-    user?: User | undefined;
   };
 }
