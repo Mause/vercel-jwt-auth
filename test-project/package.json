@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "vercel-jwt-auth": "../"
+  }
+}
