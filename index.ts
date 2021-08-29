@@ -1,9 +1,10 @@
-import { VercelRequest, VercelResponse, VercelApiHandler } from "@vercel/node";
+import { VercelResponse, VercelApiHandler, VercelRequest } from "@vercel/node";
 import { Request, Response } from "express";
 import jwt from "express-jwt";
-import { Express } from "express";
 
-type User = Express.User;
+export type VercelRequestWithUser = VercelRequest & {
+  user?: unknown;
+};
 
 interface ResponseShape {
   status: number;
@@ -22,8 +23,11 @@ export function factory(secret: string) {
     secret,
   });
 
-  return function authenticate(handler: VercelApiHandler): VercelApiHandler {
-    return function (request: VercelRequest, response: VercelResponse): void {
+  return function authenticate(handler: VercelApiHandler) {
+    return function (
+      request: VercelRequestWithUser,
+      response: VercelResponse
+    ): void {
       const expressRequest = request as unknown as Request;
       filter(expressRequest, response as unknown as Response, (error) => {
         if (isResponse(error)) {
