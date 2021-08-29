@@ -6,7 +6,6 @@
   "repository": "https://github.com/Mause/vercel-jwt-auth.git",
   "author": "Elliana <me@mause.me>",
   "private": false,
-  "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest"
