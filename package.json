@@ -1,6 +1,6 @@
 {
   "name": "vercel-jwt-auth",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index.ts",
   "license": "MIT",
   "repository": "https://github.com/Mause/vercel-jwt-auth.git",
