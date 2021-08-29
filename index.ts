@@ -1,10 +1,6 @@
-import { VercelRequest, VercelResponse, VercelApiHandler } from "@vercel/node";
+import { VercelResponse, VercelApiHandler, VercelRequest } from "@vercel/node";
 import { Request, Response } from "express";
 import jwt from "express-jwt";
-import { Express } from "express";
-import "./aug";
-
-type User = Express.User;
 
 interface ResponseShape {
   status: number;
@@ -35,5 +31,17 @@ export function factory(secret: string) {
         }
       });
     };
+  };
+}
+
+declare module "@vercel/node/dist/index" {
+  export interface User {
+    email: string;
+    id: string;
+  }
+
+  // @ts-expect-error
+  export type VercelRequest = {
+    user?: User | undefined;
   };
 }
