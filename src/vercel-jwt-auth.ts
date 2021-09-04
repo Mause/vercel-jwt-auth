@@ -14,6 +14,9 @@ interface ResponseShape {
 function isResponse(r: any): r is ResponseShape {
   return r?.status && r?.message;
 }
+function isPromise(r: any): r is Promise<unknown> {
+  return !!r?.then;
+}
 
 export function factory(secret: string) {
   const filter = jwt({
@@ -24,16 +27,24 @@ export function factory(secret: string) {
   });
 
   return function authenticate(handler: VercelApiHandler) {
-    return function (request: VercelRequestWithUser, response: VercelResponse): void {
+    return async function (
+      request: VercelRequestWithUser,
+      response: VercelResponse
+    ): Promise<void> {
       const expressRequest = request as unknown as Request;
-      filter(expressRequest, response as unknown as Response, (error) => {
-        if (isResponse(error)) {
-          response.status(error.status);
-          response.json(error.message);
-        } else {
-          handler(request, response);
+      const error = await new Promise((resolve) =>
+        filter(expressRequest, response as unknown as Response, resolve)
+      );
+
+      if (isResponse(error)) {
+        response.status(error.status);
+        response.json(error.message);
+      } else {
+        const res = handler(request, response);
+        if (isPromise(res)) {
+          await res;
         }
-      });
+      }
     };
   };
 }
