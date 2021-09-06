@@ -37,6 +37,7 @@ export function factory(secret: string) {
       );
 
       if (isResponse(error)) {
+        console.error(error);
         response.status(error.status);
         response.json(error.message);
       } else {
