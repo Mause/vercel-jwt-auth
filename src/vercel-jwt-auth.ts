@@ -39,7 +39,7 @@ export function factory(secret: string) {
       if (isResponse(error)) {
         console.error(error);
         response.status(error.status);
-        response.json({error: error.message});
+        response.json({ error: error.message });
       } else {
         const res = handler(request, response);
         if (isPromise(res)) {

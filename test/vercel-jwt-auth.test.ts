@@ -26,12 +26,12 @@ beforeEach(() => {
 test("Basic", async () => {
   endpoint({ headers: {} } as VercelRequest, response);
 
-  expect(await jsonPromise).toEqual({error: "No authorization token was found"});
+  expect(await jsonPromise).toEqual({ error: "No authorization token was found" });
 });
 test("Bad secret", async () => {
   withHeader(JWT.sign({ hello: "world", aud: "authenticated" }, "BAD SECRET"));
 
-  expect(await jsonPromise).toEqual({error: "invalid signature"});
+  expect(await jsonPromise).toEqual({ error: "invalid signature" });
 });
 test("Authed", async () => {
   jest.setTimeout(2000000);
