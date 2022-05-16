@@ -29,7 +29,7 @@
     "@types/express-jwt": "^6.0.2",
     "@vercel/node": "^1.12.1",
     "express": "^4.17.1",
-    "express-jwt": "^6.1.0"
+    "express-jwt": "^7.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.0",
