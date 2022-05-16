@@ -1,6 +1,6 @@
 import { VercelResponse, VercelApiHandler, VercelRequest } from "@vercel/node";
 import { Request, Response } from "express";
-import jwt from "express-jwt";
+import { expressjwt } from "express-jwt";
 
 export type VercelRequestWithUser = VercelRequest & {
   user?: unknown;
@@ -19,7 +19,7 @@ function isPromise(r: any): r is Promise<unknown> {
 }
 
 export function factory(secret: string) {
-  const filter = jwt({
+  const filter = expressjwt({
     algorithms: ["HS256"],
     credentialsRequired: true,
     audience: "authenticated",
