@@ -732,14 +732,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/express-jwt@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@types/express-jwt/-/express-jwt-6.0.2.tgz#15938f9a50945ccab35361227e438f98abdb713f"
-  integrity sha512-WDnO/0jeWyhX253TOIJHZzLE/pmXSucslKeztphjZDxim/wYDaDeDcj6/U9YAHcgFfwBu+I3Obfy+xB6/VaRcA==
-  dependencies:
-    "@types/express" "*"
-    "@types/express-unless" "*"
-
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.24"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.24.tgz#ea41f93bf7e0d59cd5a76665068ed6aab6815c07"
@@ -748,13 +740,6 @@
     "@types/node" "*"
     "@types/qs" "*"
     "@types/range-parser" "*"
-
-"@types/express-unless@*":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@types/express-unless/-/express-unless-0.5.2.tgz#07e29883d280778588644b03563d8796f870f20e"
-  integrity sha512-Q74UyYRX/zIgl1HSp9tUX2PlG8glkVm+59r7aK4KGKzC5jqKIOX6rrVLRQrzpZUQ84VukHtRoeAuon2nIssHPQ==
-  dependencies:
-    "@types/express" "*"
 
 "@types/express-unless@^0.5.3":
   version "0.5.3"
