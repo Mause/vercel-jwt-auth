@@ -18,14 +18,13 @@ function isPromise(r: any): r is Promise<unknown> {
   return !!r?.then;
 }
 
-export const supabase = (secret: string) => factory({
+export const supabase = (secret: string) =>
+  factory({
     algorithms: ["HS256"],
     credentialsRequired: true,
     audience: "authenticated",
     secret,
-
-});
-
+  });
 
 export type Params = Parameters<typeof expressjwt>[0];
 
