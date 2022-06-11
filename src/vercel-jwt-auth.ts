@@ -18,13 +18,19 @@ function isPromise(r: any): r is Promise<unknown> {
   return !!r?.then;
 }
 
-export function factory(secret: string) {
-  const filter = expressjwt({
+export const supabase = (secret: string) => factory({
     algorithms: ["HS256"],
     credentialsRequired: true,
     audience: "authenticated",
     secret,
-  });
+
+});
+
+
+export type Params = Parameters<typeof expressjwt>[0];
+
+export function factory(params: Params) {
+  const filter = expressjwt(params);
 
   return function authenticate(handler: VercelApiHandler) {
     return async function (
