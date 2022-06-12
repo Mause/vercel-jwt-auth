@@ -1,10 +1,10 @@
-import { factory, VercelRequestWithUser } from "../src/vercel-jwt-auth";
+import { supabase, VercelRequestWithUser } from "../src/vercel-jwt-auth";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import JWT from "jsonwebtoken";
 
 const SECRET = "...";
 
-const endpoint = factory(SECRET)((req: VercelRequestWithUser, res) => {
+const endpoint = supabase(SECRET)((req: VercelRequestWithUser, res) => {
   console.log(req.user);
   res.status(200);
   res.json("OK");
