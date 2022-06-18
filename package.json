@@ -31,7 +31,7 @@
     "@vercel/frameworks": "^1.0.1",
     "@vercel/node": "^2.0.0",
     "@vercel/routing-utils": "^1.13.4",
-    "express": "^4.17.1",
+    "express": "^4.18.1",
     "express-jwt": "^7.0.0"
   },
   "devDependencies": {
