@@ -1026,10 +1026,10 @@
     ts-node "8.9.1"
     typescript "4.3.4"
 
-"@vercel/routing-utils@^1.13.4":
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/@vercel/routing-utils/-/routing-utils-1.13.4.tgz#727efb07b45607f440e4ceeae14c24949706b240"
-  integrity sha512-ifrNFfIjGF8pSHOXB6BPUWLhG6/ZjRIdSUMrFLhBzrPj4yHelafqNSVTN70V1VHFNrr3OJscimc9EdwzOtiHzQ==
+"@vercel/routing-utils@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@vercel/routing-utils/-/routing-utils-2.0.0.tgz#45b21664bc2b27d028a64144ffdece9135917265"
+  integrity sha512-laDhH96e+IzU6GnufS5QZ3YvfqA4h5bw8j+k7+t7wPzRjtDhHDfbI45MypVWbVul7BhEZTaHztnzR0zo/YiFMw==
   dependencies:
     path-to-regexp "6.1.0"
   optionalDependencies:
