@@ -29,7 +29,7 @@
     "@types/express": "^4.17.13",
     "@vercel/build-utils": "^4.1.0",
     "@vercel/frameworks": "^1.0.1",
-    "@vercel/node": "^2.0.0",
+    "@vercel/node": "^2.5.1",
     "@vercel/routing-utils": "^1.13.4",
     "express": "^4.18.1",
     "express-jwt": "^7.0.0"
