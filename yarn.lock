@@ -998,10 +998,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vercel/build-utils@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-4.1.0.tgz#4b1a4fb5f6bebff3b7b68d87a9f3c5922ad72cd0"
-  integrity sha512-Dma7JbyHlZ1X/mJG2odK499xJuf5KJULzSAj+RNflBNe2S13IwJw3pw/LCLrP3dMxSbFrU4/ysCiTX9BTmzjHw==
+"@vercel/build-utils@^6.0.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-6.4.0.tgz#abf5c702209232c2f769893b5e745647815ad91a"
+  integrity sha512-kQEvyQOEjpfAwiX8cxuGmetffb3zkydrqQB1hJd4BihCz4Bt2f5YJvxEagzrehbGn5pCd4NRIKIi9cUL6vZRTA==
 
 "@vercel/frameworks@^1.0.1":
   version "1.0.1"
