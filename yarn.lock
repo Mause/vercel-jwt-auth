@@ -1003,12 +1003,18 @@
   resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-4.1.0.tgz#4b1a4fb5f6bebff3b7b68d87a9f3c5922ad72cd0"
   integrity sha512-Dma7JbyHlZ1X/mJG2odK499xJuf5KJULzSAj+RNflBNe2S13IwJw3pw/LCLrP3dMxSbFrU4/ysCiTX9BTmzjHw==
 
-"@vercel/frameworks@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@vercel/frameworks/-/frameworks-1.0.1.tgz#649432d8d9b52b4f33727686ff25138b8d1b3cdd"
-  integrity sha512-bsiIFsdyAPtHIlVV5JLzIsioB10CpLp3PP9ZsE0r1BQwvPx5TcnQc9YI/PMOy1lgQDzdJ8KsmRdcMz0RJBXcVw==
+"@vercel/error-utils@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@vercel/error-utils/-/error-utils-2.0.1.tgz#ea16a69542fe18013ff4f4a93dfc0d2fea9cae64"
+  integrity sha512-ZUVpRFArh5eyKpJmdfEuCaMpZKQvZgUq0pQ7PdK8m5FgRYEvF4I0TMJH3JnkbYaMMUH82aYWZr+/hFJtEBcmTQ==
+
+"@vercel/frameworks@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@vercel/frameworks/-/frameworks-2.0.1.tgz#17eb43f8a14b6b51a46aa92e8a423a358f7bf742"
+  integrity sha512-KaVxL3eOCKjbch17jCb4777GxpWdNBRYN8gQLfRsbcqhhZh6H4LyT2WIp5i8P3Hm9tuMvlabgqLmqGcMF9iSmw==
   dependencies:
     "@iarna/toml" "2.2.3"
+    "@vercel/error-utils" "2.0.1"
     js-yaml "3.13.1"
 
 "@vercel/node-bridge@3.0.0":
